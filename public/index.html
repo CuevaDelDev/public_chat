@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Chat</title>
+</head>
+
+<body>
+    <div id="blur" style="display: none;"></div>
+    <div id="todo-container">
+        <div id="user-container" class="container">
+            <h1 id="username">Anónimo</h1>
+            <form action="" id="username-form">
+                <label for="username-input" class="form-username-item">Nombre de usuario</label>
+                <input type="text" name="username-input" id="username-input" class="form-username-item" value="Anónimo">
+                <button class="form-username-item" id="boton-actualizar-username">Actualizar nombre</button>
+            </form>
+        </div>
+        <div id="chat-container" class="container">
+
+            <div class="cont-img" id="cont-img" style="display: none;">
+                <div class="img" id="img-form-cont">
+                    <span class="close">&times;</span>
+                    <img src="" alt="" id="upload-img-form">
+                    <button id="send-button-img" class="send-button"></button>
+                </div>
+            </div>
+            <div id="chat-box">
+
+            </div>
+            <div class="boton-flecha" style="display: none;">
+                ↓
+            </div>
+            <form id="input-chat">
+                <input type="file" name="" id="upload-img" hidden accept="image/*">
+                <button id="send-image" type="button"></button>
+                <input type="text" id="user-input" placeholder="Escribe tu mensaje aquí...">
+                <button id="send-button" class="send-button"></button>
+            </form>
+        </div>
+        <script src="socket.js"></script>
+        <script src="script.js"></script>
+    </div>
+</body>
+
+</html>
