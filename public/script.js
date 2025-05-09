@@ -69,11 +69,15 @@ document.querySelector('.close').addEventListener('click', (e) => {
 
 inputFile.addEventListener('change', (e) => {
     const file = e.target.files[0];
-    const imageURL = URL.createObjectURL(file);
+    const reader = new FileReader();
 
-    document.getElementById('upload-img-form').src = imageURL;
+    reader.onloadend = () => {
+        document.getElementById('upload-img-form').src = reader.result;
+        mensajeNuevo.img = reader.result;
+    };
 
-    mensajeNuevo.img = imageURL;
+    reader.readAsDataURL(file);
+
     document.getElementById('cont-img').style.display = 'block';
     document.getElementById('blur').style.display = "block";
     // URL.revokeObjectURL(imageURL);
