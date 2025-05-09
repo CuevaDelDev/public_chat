@@ -80,7 +80,6 @@ inputFile.addEventListener('change', (e) => {
 
     document.getElementById('cont-img').style.display = 'block';
     document.getElementById('blur').style.display = "block";
-    // URL.revokeObjectURL(imageURL);
 });
 
 function recibirMensaje(mensaje) {
@@ -112,11 +111,3 @@ function recibirMensajeImg(mensaje) {
     `
     return divCont;
 }
-
-chatBox.addEventListener('scrollend', (e) => {
-    if (chatBox.scrollTop <= -100) {
-        let boton = document.querySelector('.boton-flecha');
-        boton.style.display
-    }
-});
-

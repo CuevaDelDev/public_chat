@@ -12,11 +12,39 @@ body {
 }
 
 #todo-container {
-    padding: 15px 0px;
+    padding: 0px;
     display: flex;
     width: 100%;
-    height: 95vh;
+    height: 99.6vh;
     justify-content: flex-start;
+}
+
+.users-connected-box {
+    width: 100%;
+    height: 10%;
+    border-bottom: 1px solid #686868;
+}
+
+.users-connected {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+.user-connected-item {
+    margin-left: 10px;;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.users-connected-text {
+    color: #686868;
 }
 
 .container {
@@ -113,6 +141,7 @@ body {
     width: 40px;
     height: 40px;
 }
+
 .form-username-item {
     margin: 10px 0;
     border: 1px solid black;
@@ -173,7 +202,8 @@ img {
     max-height: 500px;
 }
 
-.mensaje, .mensaje-enviado {
+.mensaje,
+.mensaje-enviado {
     align-self: flex-start;
     align-items: flex-start;
     max-width: 1000px;
@@ -187,7 +217,8 @@ img {
     align-items: flex-end;
 }
 
-.mensaje-username, .hora {
+.mensaje-username,
+.hora {
     font-size: 13px;
 }
 
