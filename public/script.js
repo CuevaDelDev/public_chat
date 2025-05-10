@@ -6,7 +6,8 @@ const inputFile = document.getElementById('upload-img');
 
 document.getElementById('send-button').addEventListener('click', (e) => {
     e.preventDefault();
-    if (inputChat.value == '') return;
+    let text = inputChat.value.trim();
+    if (text == '') return;
     let fecha = new Date().toLocaleTimeString(navigator.language, { hour: '2-digit', minute: '2-digit' });
     mensajeNuevo.fecha = fecha;
 
