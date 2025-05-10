@@ -14,14 +14,15 @@ socket.on('nuevo-usuario', (users) => {
 });
 
 socket.on('recibir-mensaje', (mensaje) => {
-    if (mensaje.username == mensajeNuevo.username) return;
+    console.log(mensaje[1]);
+    if (mensaje[0].username == mensajeNuevo.username) return;
     const div = document.createElement('div');
     div.classList.add('mensaje');
-    if (mensaje.img != '') {
-        div.innerHTML = recibirMensajeImg(mensaje);
 
+    if (mensaje[0].img.trim() != "") {
+        div.innerHTML = recibirMensajeImg(mensaje[0]);
     } else {
-        div.innerHTML = recibirMensaje(mensaje);
+        div.innerHTML = recibirMensaje(mensaje[0]);
     }
     chatBox.prepend(div);
 });
