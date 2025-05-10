@@ -12,6 +12,7 @@
 <body>
     <div id="blur" style="display: none;"></div>
     <div id="todo-container">
+
         <div id="user-container" class="container">
             <h1 id="username">Anónimo</h1>
             <form action="" id="username-form">
@@ -21,7 +22,12 @@
             </form>
         </div>
         <div id="chat-container" class="container">
-
+            <div class="users-connected-box">
+                <div class="users-connected">
+                    <div class="user-connected-item title">Chat global</div>
+                    <div class="user-connected-item users-connected-text" id="users-text">0 Usuarios conectados</div>
+                </div>
+            </div>
             <div class="cont-img" id="cont-img" style="display: none;">
                 <div class="img" id="img-form-cont">
                     <span class="close">&times;</span>
@@ -31,9 +37,6 @@
             </div>
             <div id="chat-box">
 
-            </div>
-            <div class="boton-flecha" style="display: none;">
-                ↓
             </div>
             <form id="input-chat">
                 <input type="file" name="" id="upload-img" hidden accept="image/*">

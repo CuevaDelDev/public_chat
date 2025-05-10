@@ -5,6 +5,8 @@ const http = require('http');
 const server = http.createServer(app);
 const io = require('socket.io')(server);
 
+let users = 0;
+
 app.set('port', 3000);
 app.use(express.static(__dirname + '/public'));
 
@@ -17,9 +19,17 @@ server.listen(app.get('port'),()=>{
 });
 
 io.on('connection',(socket)=>{
+
+    users++;
+    io.emit('nuevo-usuario',users);
     console.log(socket.id);
 
     socket.on('mensaje-enviado',(mensajeNuevo)=>{
         io.emit('recibir-mensaje',mensajeNuevo)
+    });
+
+    socket.on('disconnect',()=>{
+        users--;
+        io.emit('nuevo-usuario',users);
     });
 });
