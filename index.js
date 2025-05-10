@@ -1,3 +1,6 @@
+require('dotenv').config();
+const urlApiModeracion = process.env.URL_API_MODERACION;
+
 const express = require('express');
 const app = express();
 
@@ -30,11 +33,11 @@ io.on('connection', (socket) => {
     socket.on('mensaje-enviado', async (mensajeNuevo) => {
         mensajeNuevo.ip = ip;
         if (mensajeNuevo.img != '') {
-            moderation.checkImg(mensajeNuevo).then(data => {
+            moderation.checkImg(mensajeNuevo, urlApiModeracion).then(data => {
                 io.emit('recibir-mensaje', [mensajeNuevo, data]);
             });
         } else {
-            moderation.checkMessage(mensajeNuevo).then(data => {
+            moderation.checkMessage(mensajeNuevo, urlApiModeracion).then(data => {
                 io.emit('recibir-mensaje', [mensajeNuevo, data]);                
             });
         }

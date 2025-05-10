@@ -1,5 +1,5 @@
 const moderation = {
-    checkMessage: async (mensaje) => {
+    checkMessage: async (mensaje, url) => {
 
         console.log("Moderando mensaje...");
 
@@ -13,7 +13,7 @@ const moderation = {
 
         let respuesta;
 
-        const response = await fetch('https://8wq5vvd9-8000.use2.devtunnels.ms/text/moderate', {
+        const response = await fetch(url+'/text/moderate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -48,7 +48,7 @@ const moderation = {
 
         console.log(body);
 
-        const response = await fetch('https://8wq5vvd9-8000.use2.devtunnels.ms/img/moderate', {
+        const response = await fetch(url+'/img/moderate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
