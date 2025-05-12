@@ -8,20 +8,14 @@ document.getElementById('send-button').addEventListener('click', (e) => {
     e.preventDefault();
     let text = inputChat.value.trim();
     if (text == '') return;
-    let fecha = new Date().toLocaleTimeString(navigator.language, { hour: '2-digit', minute: '2-digit' });
+    let fecha = new Date();
     mensajeNuevo.fecha = fecha;
 
-    const div = document.createElement('div');
-    div.classList.add('mensaje-enviado');
-
     mensajeNuevo.texto = inputChat.value;
-    div.innerHTML = recibirMensaje(mensajeNuevo);
     inputChat.value = '';
 
     socket.emit('mensaje-enviado', mensajeNuevo);
     inputChat.focus();
-
-    chatBox.prepend(div);
 });
 
 document.getElementById('send-button-img').addEventListener('click', (e) => {
@@ -93,7 +87,7 @@ function recibirMensaje(mensaje) {
                 ${mensaje.texto}
             </div>
             <div class="hora">
-                ${mensaje.fecha}
+                ${new Date(mensaje.fecha).toLocaleTimeString(navigator.language, { hour: '2-digit', minute: '2-digit' })}
             </div>
     `
     return divCont;

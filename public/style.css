@@ -149,6 +149,10 @@ body {
     border-radius: 15px;
 }
 
+#boton-actualizar-username {
+    cursor: pointer;
+}
+
 form label {
     border: 0 !important;
     padding: 0 !important;
