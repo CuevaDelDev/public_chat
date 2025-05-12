@@ -22,15 +22,6 @@ const moderation = {
         });
 
         console.log('Conexion a la api de moderación: ', response.status);
-        response.text().then(res => {
-            console.log('respuesta en texto: ', res);
-        }).catch(err => {
-            console.log("Error en la moderación de texto: ", err);
-            return {
-                message: "Error en la moderación de texto",
-                body
-            }
-        });
 
         await response.json().then(res => {
             respuesta = res;
