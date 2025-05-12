@@ -31,14 +31,17 @@ io.on('connection', (socket) => {
     console.log(socket.id+"__"+ip);
 
     socket.on('mensaje-enviado', async (mensajeNuevo) => {
+        mensajeNuevo.id = Math.floor(Math.random() * 1000000);
         mensajeNuevo.ip = ip;
         if (mensajeNuevo.img != '') {
+            io.emit('recibir-mensaje', [mensajeNuevo]);
             moderation.checkImg(mensajeNuevo, urlApiModeracion).then(data => {
-                io.emit('recibir-mensaje', [mensajeNuevo, data]);
+                io.emit('censurar-mensaje', [mensajeNuevo, data]);
             });
         } else {
+            io.emit('recibir-mensaje', [mensajeNuevo]); 
             moderation.checkMessage(mensajeNuevo, urlApiModeracion).then(data => {
-                io.emit('recibir-mensaje', [mensajeNuevo, data]);                
+                io.emit('censurar-mensaje', [mensajeNuevo, data]);
             });
         }
     });

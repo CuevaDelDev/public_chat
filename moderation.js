@@ -9,16 +9,27 @@ const moderation = {
             ip: mensaje.ip,
         }
 
-        console.log(body);
+        console.log("Body:", JSON.stringify(body));
 
         let respuesta;
 
-        const response = await fetch(url+'/text/moderate', {
+        const response = await fetch(url + '/text/moderate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(body)
+        });
+
+        console.log('Conexion a la api de moderación: ', response.status);
+        response.text().then(res => {
+            console.log('respuesta en texto: ', res);
+        }).catch(err => {
+            console.log("Error en la moderación de texto: ", err);
+            return {
+                message: "Error en la moderación de texto",
+                body
+            }
         });
 
         await response.json().then(res => {
@@ -35,7 +46,7 @@ const moderation = {
         return respuesta;
     },
 
-    checkImg: async (mensaje) => {
+    checkImg: async (mensaje, url) => {
         console.log("Moderando imagen...");
 
         let img = mensaje.img.split(',')[1];
@@ -48,7 +59,7 @@ const moderation = {
 
         console.log(body);
 
-        const response = await fetch(url+'/img/moderate', {
+        const response = await fetch(url + '/image/moderate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
